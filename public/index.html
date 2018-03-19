@@ -30,10 +30,23 @@
 				<button class="btn btn-delete">RESET</button>
 			</div>
 		</div>
+		<div class="container">
+			<form id = 'poll_creator' action="/create" method="post">
+				<div id = 'poll_fields'>
+					<input type="text" name="field1"/>
+					<input type="text" name="field2"/>
+				</div>	
+				<button id=add_opt>add option</button>
+				<input type="submit" value="Submit"/>	
+			</form>
+
 		
+		</div>
+		<script type="text/javascript" src="controllers/pollCreateController.client.js"></script>
 		<script type="text/javascript" src="common/ajax-functions.js"></script>
 		<script type="text/javascript" src="controllers/clickController.client.js"></script>
 		<script type="text/javascript" src="controllers/userController.client.js"></script>
+		
 	</body>
 
 </html>
