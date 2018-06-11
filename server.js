@@ -11,7 +11,7 @@ var app = express();
 require('dotenv').load();
 require('./app/config/passport')(passport);
 //
-mongoose.set('debug', true);
+//mongoose.set('debug', true);
 //
 mongoose.connect(process.env.MONGO_URI);
 mongoose.Promise = global.Promise;
@@ -37,4 +37,5 @@ var port = process.env.PORT || 8080;
 app.listen(port,  function () {
 	console.log('Node.js listening on port ' + port + '...');
 });
-//404 for wrong poll, option limit, no vote if no options, remove _id
+//option limit, no vote if no options, redo vote function, 
+//globalize poll object var names

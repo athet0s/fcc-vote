@@ -76,5 +76,8 @@ module.exports = function (app, passport) {
 		.delete(function(req, res) {
 		    pollHandler.delPoll(req, res);
 		});
-		
+	app.route('/404')
+		.get(function(req, res) {
+			res.sendFile(path + '/public/404.html');
+		});
 };

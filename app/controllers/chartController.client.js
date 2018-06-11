@@ -2,6 +2,7 @@
 (function () {
     var pollId = window.location.pathname.split('/')[2];
     var apiUrl = appUrl + '/api/' + pollId + '/polls';
+    var noPage = appUrl + '/404';
     var pollChart = document.getElementById("poll_chart").getContext('2d');
     var delButton = document.getElementById('delete');
     var pollCont = document.getElementById('poll_container');
@@ -46,7 +47,7 @@
         form.setAttribute('method', 'post');
         
         for (let i = 0; i < chartData.length; i++){
-            showOption(form, chartData[i].fieldName, chartData[i].fieldId);
+            showOption(form, chartData[i].fieldName, chartData[i]._id);
             labels.push(chartData[i].fieldName);
             votes.push(chartData[i].votes);
         }
@@ -86,9 +87,16 @@
         });
     }
     
+    function fail(status){
+        if (status === 404){
+            console.log('here');
+            window.location.href = noPage;
+        }
+    }
     
     
-    ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', apiUrl, parseChart));
+    
+    ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', apiUrl, parseChart, fail));
 
     
 }) ();
